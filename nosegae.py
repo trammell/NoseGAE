@@ -56,7 +56,8 @@ class NoseGAE(Plugin):
             self._path = config.workingDir
         if options.gae_lib_root is not None:
             root = self._gae_path = options.gae_lib_root
-            sys.path.append(root)
+            sys.path.insert(0, root)    # prepend gae-lib-root if supplied
+            
         else:
             self._gae_path = None
         if options.gae_data is not None:
